@@ -42,14 +42,21 @@ add_executable(arithchk arithchk.c)
 if(UNIX)
   target_link_libraries(arithchk m)
 endif()
-set_target_properties(arithchk PROPERTIES COMPILE_DEFINITIONS 
+set_target_properties(arithchk PROPERTIES COMPILE_DEFINITIONS
   "NO_FPINIT;NO_LONG_LONG")
-ADD_CUSTOM_COMMAND(
-   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/arith.h
-   COMMAND arithchk > ${CMAKE_CURRENT_BINARY_DIR}/arith.h
-   DEPENDS arithchk
-   )
-
+if (ANDROID)
+	add_custom_command(
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/arith.h
+		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/arith.h.android19
+		${CMAKE_CURRENT_BINARY_DIR}/arith.h
+	)
+else()
+	ADD_CUSTOM_COMMAND(
+	   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/arith.h
+	   COMMAND arithchk > ${CMAKE_CURRENT_BINARY_DIR}/arith.h
+	   DEPENDS arithchk
+	   )
+endif()
 
 set(OFILES  ${MISC} ${POW} ${CX} ${DCX} ${REAL} ${DBL} ${INT} 
   ${HALF} ${CMP} ${EFL} ${CHAR} ${I77} ${TIME})
