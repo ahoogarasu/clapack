@@ -233,7 +233,9 @@ ieee0(Void)
 
 #ifdef __linux__
 #define IEEE0_done
+#ifndef __ANDROID__
 #include "fpu_control.h"
+#endif
 
 #ifdef __alpha__
 #ifndef USE_setfpucw
