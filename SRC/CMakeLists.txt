@@ -378,3 +378,4 @@ endif()
 add_library(lapack SHARED ${ALLOBJ} ${ALLXOBJ})
 target_link_libraries(lapack blas)
 
+install(TARGETS lapack DESTINATION lib)

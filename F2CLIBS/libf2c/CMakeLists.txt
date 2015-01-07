@@ -67,3 +67,5 @@ include_directories(${CLAPACK_SOURCE_DIR}/F2CLIBS/libf2c)
 include_directories(${CLAPACK_BINARY_DIR}/F2CLIBS/libf2c)
 add_library(f2c SHARED ${OFILES} ${CMAKE_CURRENT_BINARY_DIR}/arith.h)
 set_property(TARGET f2c PROPERTY PREFIX lib)
+
+install(TARGETS f2c DESTINATION lib)
