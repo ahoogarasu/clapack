@@ -34,5 +34,5 @@ configure_file(${CLAPACK_SOURCE_DIR}/clapack-config-version.cmake.in
 configure_file(${CLAPACK_SOURCE_DIR}/clapack-config.cmake.in
   ${CLAPACK_BINARY_DIR}/clapack-config.cmake @ONLY)
 
-install(FILES INCLUDE/blaswrap.h INCLUDE/clapack.h DESTINATION include/clapack
+install(FILES INCLUDE/blaswrap.h INCLUDE/clapack.h DESTINATION include/clapack)
 install(FILES INCLUDE/f2c.h DESTINATION include)
